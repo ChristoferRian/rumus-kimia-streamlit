@@ -1,13 +1,17 @@
 import streamlit as st
 from utils import process_option
-# Daftar opsi untuk dropdown
-options = ['Normalitas', 'Moralitas', "kadar(%b/v)", 'kadar(PPM)','Penentuan jenis larutan berdasarkan pH', 'perhitungan pH']
 
-# Tampilkan dropdown di aplikasi web
-selected_option = st.selectbox("Pilih opsi:", options)
+def main():
+    st.title("Aplikasi Kimia")
 
-# Periksa apakah opsi sudah dipilih
-if selected_option:
-  # Panggil fungsi process_option dengan opsi yang dipilih
-  # disinilah function process_option di eksekusi
-  process_option(selected_option)
+    # Sidebar
+    st.sidebar.title("Menu")
+    option = ["Normalitas", "Molaritas", "kadar(%b/v)", "kadar(PPM)", "Penentuan jenis larutan berdasarkan pH", "perhitungan pH"]
+
+    selected_option = st.sidebar.selectbox("Pilih Fitur", option)
+
+    if selected_option:
+        process_option(selected_option)
+
+if __name__ == "__main__":
+    main()

@@ -1,11 +1,11 @@
 import streamlit as st
 
 def molaritasStart():
-  opsi = st.radio(
+  opsi_molaritas = st.radio(
     "silahkan pilih :",
     ('Molaritas', 'Molalitas'))
 
-  if opsi == 'Molaritas':
+  if opsi_molaritas == 'Molaritas':
     def Molaritas():
       st.divider()
       mol_larut = st.number_input('masukkan nilai zat mol yang terlarut :')
@@ -16,11 +16,15 @@ def molaritasStart():
         mol = mol_larut / Volume
       else:
         mol = 0
+      
+      
+      st.latex("Kadar_PPM = \\frac{Mol yang terlarut}{Volume} = \\frac{%s}{%s} = %s" % (mol_larut, Volume, mol))
+
+
       st.write('nilai molaritas dari larutan tersebut adalah', mol, 'mol')
-      # Tambahkan kode logika untuk normalitas biasa di sini
     Molaritas()
 
-  elif opsi == 'Molalitas':
+  elif opsi_molaritas == 'Molalitas':
     def Molalitas():
       st.divider()
       massa_terlarut = st.number_input("Massa zat terlarut (gram)")
@@ -31,6 +35,12 @@ def molaritasStart():
         molalitas = (massa_terlarut * 1000) / (massa_molekul * massa_pelarut)
       else:
         molalitas = 0
+
+
+      st.latex("Molalitas = \\frac{{Massa_{Terlarut} \\times 1000}}{{Massa_{Molekul} \\times Massa_{Pelarut}}}= \\frac{{%s \\times 1000}}{{%s \\times %s}} = %s" % (massa_terlarut, massa_molekul, massa_pelarut, molalitas))
+      
+
+      st.divider()
       st.write("Molalitas:", molalitas, 'mol')
 
 
